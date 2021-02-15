@@ -1,9 +1,23 @@
 console.log("Let's get this party started!");
+
+const $gifarea = $('#gifs');
+
 async function searchFor() {
-let input = document.querySelector("input").innerText;
-let res = await axios.get('http://api.giphy.com/v1/gifs/search?q=${input}&api_key=MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym');
-document.querySelector('body').append(res.data[1].url);
-console.log(res)
+let input = document.querySelector("input").value;
+let res = await axios.get('http://api.giphy.com/v1/gifs/search', {params: {
+    q: input, api_key: "MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym"
+}});
+let $newGif = $("<img>", {
+    src: res.data.data[1].images.original.url,
+    class: "w-100"
+});
+let $col = $("div");
+$col.append($newGif)
+$gifarea.append($col);
 };
 
-document.querySelector('button').addEventListener('click', searchFor);
+function del() {
+    $gifarea.empty();
+}
+
+//document.querySelector('button').addEventListener('click', searchFor);

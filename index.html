@@ -8,10 +8,12 @@
 
 <body>
   <form>
-    <input type='text'>
-    <button type='button'>Submit</button>
+    <input type='text' id='input'>
+    <button type='button' onclick='searchFor()'>Submit</button>
+    <button type='button' onclick='del()'>Delete</button>
 
   </form>
+  <div id='gifs' class='row'></div>
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.js"></script>
 <script src="app.js"></script>
